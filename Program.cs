@@ -1,6 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 
 namespace TextRPG;
 
@@ -214,6 +215,7 @@ class Program
         foreach (Item item in storeItem)
         {
             Console.WriteLine($"- {item.name} | {item.powerType} +{item.powerValue} | {item.explanation} | {item.goldStr}");
+            // Console.WriteLine($"- {item.name.PadRight(8)} | {item.powerType} +{item.powerValue} | {item.explanation} | {item.goldStr}");
         }
 
         Console.WriteLine($@"
@@ -292,7 +294,6 @@ class Program
                     Console.WriteLine("❗️ Gold가 부족합니다.");
                 }
             }
-            // inventoryItem.Insert(select - 1, storeItem.Find(item => item.num == select));  // 아이템 번호를 통해 리스트 내의 객체를 가져옴        
         }
         else if (select == 0)
         {
@@ -303,21 +304,16 @@ class Program
             Console.WriteLine("❗️ 잘못된 입력입니다.");
         }
         SelectBuyScreen(player, storeItem, inventoryItem);
-
     }    
+    // public static string cellSort(Item item)
+    // {
+    //     int padLen = 30 - Encoding.Default.GetBytes(item.name).Length;
+
+    //     return $"{"".PadLeft(padLen)}{item.name}";
+    // }
     
     public static void Main(string[] args)
     {
-        // 플레이어 정보 저장
-        // Player player;
-        // player.level = 1;
-        // player.name = "";
-        // player.chad = "전사";
-        // player.attack = 10;
-        // player.defense = 5;
-        // player.hp = 100;
-        // player.gold = 3000;
-
         Player player = new Player(1, "", "전사", 10, 5, 100, 3000);
         
         // 아이템 목록 저장
@@ -334,8 +330,6 @@ class Program
             item1, item2, item3, item4, item5, item6
         };
 
-        // List<Item> inventoryItem = new List<Item>(storeItem);
-        // List<Item> inventoryItem = storeItem.ConvertAll(item => new Item(item.num, item.name, item.defense, item.explanation, item.gold));
         List<Item> inventoryItem = new List<Item>();
 
         selectStartScreen(player, storeItem, inventoryItem);
