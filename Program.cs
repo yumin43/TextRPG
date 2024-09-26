@@ -7,7 +7,7 @@ namespace TextRPG;
 
 class Program
 {
-    public static void selectStartScreen(Player player, List<Item> storeItem, List<Item> inventoryItem)
+    public static void LoadStartScreen(Player player, List<Item> storeItem, List<Item> inventoryItem)
     {
         Console.WriteLine(@"
             🗡️ 스파르타 마을에 오신 여러분 환영합니다. 
@@ -30,24 +30,24 @@ class Program
         }
         else if (select == 1)           // 상태 보기
         {
-            SelectStateScreen(player, storeItem, inventoryItem);
+            LoadStateScreen(player, storeItem, inventoryItem);
         }
         else if (select == 2)      // 인벤토리
         {
-            SelectInventoryScreen(player, storeItem, inventoryItem);
+            LoadInventoryScreen(player, storeItem, inventoryItem);
         }
         else if (select == 3)      // 상점
         {
-            SelectStoreScreen(player, storeItem, inventoryItem);
+            LoadStoreScreen(player, storeItem, inventoryItem);
         }
         else
         {
             Console.WriteLine("❗️ 잘못된 입력입니다.");
         }
-        selectStartScreen(player, storeItem, inventoryItem);
+        LoadStartScreen(player, storeItem, inventoryItem);
     }
 
-    public static void SelectStateScreen(Player player, List<Item> storeItem, List<Item> inventoryItem)
+    public static void LoadStateScreen(Player player, List<Item> storeItem, List<Item> inventoryItem)
     {
         Console.Write($@"
             📍 상태 보기
@@ -90,16 +90,16 @@ class Program
 
         if (select == 0)
         {
-            selectStartScreen(player, storeItem, inventoryItem);
+            LoadStartScreen(player, storeItem, inventoryItem);
         }
         else
         {
             Console.WriteLine("❗️ 잘못된 입력입니다.");
         }
-        SelectStateScreen(player, storeItem, inventoryItem);
+        LoadStateScreen(player, storeItem, inventoryItem);
     }
 
-    public static void SelectInventoryScreen(Player player, List<Item> storeItem, List<Item> inventoryItem)
+    public static void LoadInventoryScreen(Player player, List<Item> storeItem, List<Item> inventoryItem)
     {
         Console.Write($@"
             📍 인벤토리
@@ -125,20 +125,20 @@ class Program
 
         if (select == 0)
         {
-            selectStartScreen(player, storeItem, inventoryItem);
+            LoadStartScreen(player, storeItem, inventoryItem);
         }
         else if (select == 1)
         {
-            SelectEquipScreen(player, storeItem, inventoryItem);
+            LoadEquipScreen(player, storeItem, inventoryItem);
         }
         else
         {
             Console.WriteLine("❗️ 잘못된 입력입니다.");
         }
-        SelectInventoryScreen(player, storeItem, inventoryItem);
+        LoadInventoryScreen(player, storeItem, inventoryItem);
     }
 
-    public static void SelectEquipScreen(Player player, List<Item> storeItem, List<Item> inventoryItem)
+    public static void LoadEquipScreen(Player player, List<Item> storeItem, List<Item> inventoryItem)
     {
         Console.Write($@"
             📍 인벤토리 - 장착 관리
@@ -190,17 +190,17 @@ class Program
         }
         else if (select == 0)
         {
-            SelectInventoryScreen(player, storeItem, inventoryItem);
+            LoadInventoryScreen(player, storeItem, inventoryItem);
         }
         else
         {
             Console.WriteLine("❗️ 잘못된 입력입니다.");
         }
 
-        SelectEquipScreen(player, storeItem, inventoryItem);
+        LoadEquipScreen(player, storeItem, inventoryItem);
     }
     
-    public static void SelectStoreScreen(Player player, List<Item> storeItem, List<Item> inventoryItem)
+    public static void LoadStoreScreen(Player player, List<Item> storeItem, List<Item> inventoryItem)
     {
         Console.WriteLine($@"
             📍 상점
@@ -230,20 +230,20 @@ class Program
 
         if (select == 0) 
         {
-            selectStartScreen(player, storeItem, inventoryItem);
+            LoadStartScreen(player, storeItem, inventoryItem);
         }
         else if (select == 1)
         {
-            SelectBuyScreen(player, storeItem, inventoryItem);
+            LoadBuyScreen(player, storeItem, inventoryItem);
         }
         else 
         {
             Console.WriteLine("❗️ 잘못된 입력입니다.");
         }
-        SelectStoreScreen(player, storeItem, inventoryItem);
+        LoadStoreScreen(player, storeItem, inventoryItem);
     }    
 
-    public static void SelectBuyScreen(Player player, List<Item> storeItem, List<Item> inventoryItem) 
+    public static void LoadBuyScreen(Player player, List<Item> storeItem, List<Item> inventoryItem) 
     {
         Console.WriteLine($@"
             📍 상점 - 아이템 구매
@@ -297,14 +297,15 @@ class Program
         }
         else if (select == 0)
         {
-            SelectStoreScreen(player, storeItem, inventoryItem);
+            LoadStoreScreen(player, storeItem, inventoryItem);
         }
         else
         {
             Console.WriteLine("❗️ 잘못된 입력입니다.");
         }
-        SelectBuyScreen(player, storeItem, inventoryItem);
+        LoadBuyScreen(player, storeItem, inventoryItem);
     }    
+    
     // public static string cellSort(Item item)
     // {
     //     int padLen = 30 - Encoding.Default.GetBytes(item.name).Length;
@@ -332,7 +333,7 @@ class Program
 
         List<Item> inventoryItem = new List<Item>();
 
-        selectStartScreen(player, storeItem, inventoryItem);
+        LoadStartScreen(player, storeItem, inventoryItem);
 
     }
 }
